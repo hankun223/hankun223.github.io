@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅行足迹 — 高坤涵</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hobby-page { padding: 120px 48px 100px; }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      font-size: 15px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .page-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .page-icon { font-size: 44px; }
+    .page-title { font-size: clamp(28px, 5vw, 48px); font-weight: 700; }
+
+    .page-intro {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* ===== 图例 ===== */
+    .map-legend {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend-dot.visited { background: var(--accent); }
+    .legend-dot.wishlist { background: #f59e0b; }
+
+    /* ===== 地图容器 ===== */
+    .map-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 64px;
+    }
+    .map-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .land { fill: #ede7f6; stroke: #c9b8e0; stroke-width: 1; }
+    .city-dot-visited {
+      fill: var(--accent);
+      opacity: 0.85;
+      cursor: default;
+    }
+    .city-dot-wish {
+      fill: #f59e0b;
+      opacity: 0.85;
+      cursor: default;
+    }
+    .city-dot-visited:hover,
+    .city-dot-wish:hover { opacity: 1; }
+    .city-label {
+      font-size: 11px;
+      fill: #5c4068;
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ===== 城市说明区 ===== */
+    .city-section { margin-bottom: 56px; }
+    .city-section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 28px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .city-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .city-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .city-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .city-card.wish { border-left: 3px solid #f59e0b; }
+    .city-card.wish:hover { border-color: #f59e0b; }
+    .city-photo {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+    }
+    .city-card-body {
+      padding: 20px 22px;
+    }
+    .city-card-no-photo {
+      padding: 20px 22px;
+    }
+    .city-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .city-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .city-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .city-badge.visited {
+      background: rgba(155, 58, 138, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(155, 58, 138, 0.22);
+    }
+    .city-badge.wish {
+      background: rgba(245, 158, 11, 0.08);
+      color: #b45309;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    @media (max-width: 700px) {
+      .hobby-page { padding: 88px 20px 60px; }
+      .city-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 420px) {
+      .city-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo" style="text-decoration:none;">高坤涵</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">基本情况</a></li>
+      <li><a href="../index.html#hobbies">兴趣爱好</a></li>
+      <li><a href="../index.html#monologue">个人独白</a></li>
+    </ul>
+  </nav>
+
+  <main class="hobby-page">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#hobbies">← 返回兴趣爱好</a>
+
+      <div class="page-heading">
+        <span class="page-icon">🗺️</span>
+        <h1 class="page-title">旅行足迹</h1>
+      </div>
+
+      <p class="page-intro">安徽是我的家乡，上海是我的大学所在地，以下是从这两个据点出发踏过的地方。</p>
+
+      <div class="map-legend">
+        <div class="legend-item">
+          <span class="legend-dot visited"></span>已去过（15 城）
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot wishlist"></span>想去（4 处）
+        </div>
+      </div>
+
+      <!-- 中国地图 SVG（简化示意，经纬度近似投影） -->
+      <div class="map-wrap">
+        <svg class="map-svg" viewBox="0 0 860 680" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- 大陆轮廓（简化折线） -->
+          <polygon class="land" points="
+            180,40  260,20  340,10  420,18  480,10  530,20  560,15  600,30
+            640,25  680,40  720,60  740,80  760,100 770,130 750,160 730,180
+            760,200 780,230 790,260 770,290 750,310 760,340 750,370 720,390
+            700,420 680,440 660,460 640,480 610,490 580,510 560,530 540,550
+            520,560 500,570 480,580 460,570 440,560 420,550 400,540 380,550
+            360,560 340,555 320,545 300,540 280,530 260,520 240,510 220,500
+            200,490 185,475 170,460 160,445 150,430 145,415 140,400 135,385
+            130,370 125,355 120,340 118,320 115,300 112,280 115,260 120,240
+            118,220 115,200 112,180 115,160 118,140 120,120 125,100 140,80
+            160,60 180,40
+          "/>
+          <ellipse class="land" cx="700" cy="480" rx="18" ry="30" transform="rotate(-20 700 480)"/>
+          <ellipse class="land" cx="560" cy="570" rx="22" ry="15"/>
+
+          <!-- ── 已去城市 ── -->
+          <circle class="city-dot-visited" cx="440" cy="445" r="6"/>
+          <text class="city-label" x="450" y="443">长沙</text>
+
+          <circle class="city-dot-visited" cx="621" cy="510" r="6"/>
+          <text class="city-label" x="630" y="508">厦门</text>
+
+          <circle class="city-dot-visited" cx="631" cy="492" r="6"/>
+          <text class="city-label" x="640" y="490">福州</text>
+
+          <circle class="city-dot-visited" cx="597" cy="415" r="6"/>
+          <text class="city-label" x="607" y="413">南京</text>
+
+          <circle class="city-dot-visited" cx="614" cy="423" r="6"/>
+          <text class="city-label" x="624" y="421">苏州</text>
+
+          <circle class="city-dot-visited" cx="600" cy="408" r="6"/>
+          <text class="city-label" x="574" y="406">扬州</text>
+
+          <circle class="city-dot-visited" cx="605" cy="413" r="5"/>
+          <text class="city-label" x="580" y="420">镇江</text>
+
+          <circle class="city-dot-visited" cx="620" cy="418" r="6"/>
+          <text class="city-label" x="628" y="416">无锡</text>
+
+          <circle class="city-dot-visited" cx="624" cy="435" r="6"/>
+          <text class="city-label" x="634" y="433">杭州</text>
+
+          <circle class="city-dot-visited" cx="616" cy="427" r="6"/>
+          <text class="city-label" x="592" y="424">湖州</text>
+
+          <circle class="city-dot-visited" cx="612" cy="410" r="6"/>
+          <text class="city-label" x="602" y="402">常州</text>
+
+          <circle class="city-dot-visited" cx="660" cy="313" r="6"/>
+          <text class="city-label" x="668" y="311">大连</text>
+
+          <circle class="city-dot-visited" cx="580" cy="292" r="7"/>
+          <text class="city-label" x="590" y="290" style="font-weight:600;font-size:12px;">北京</text>
+
+          <circle class="city-dot-visited" cx="585" cy="340" r="6"/>
+          <text class="city-label" x="593" y="338">济南</text>
+
+          <circle class="city-dot-visited" cx="540" cy="362" r="6"/>
+          <text class="city-label" x="548" y="360">郑州</text>
+
+          <!-- ── 想去城市 ── -->
+          <circle class="city-dot-wish" cx="552" cy="514" r="6"/>
+          <text class="city-label" x="560" y="512" style="fill:#b45309;">香港</text>
+
+          <circle class="city-dot-wish" cx="532" cy="502" r="6"/>
+          <text class="city-label" x="508" y="500" style="fill:#b45309;">广州</text>
+
+          <circle class="city-dot-wish" cx="323" cy="466" r="6"/>
+          <text class="city-label" x="292" y="462" style="fill:#b45309;">云南大理</text>
+
+          <circle class="city-dot-wish" cx="488" cy="271" r="6"/>
+          <text class="city-label" x="496" y="267" style="fill:#b45309;">内蒙古</text>
+
+        </svg>
+      </div>
+
+      <!-- ===== 已去城市说明 ===== -->
+      <section class="city-section">
+        <h2 class="city-section-title">✓ 已经去过</h2>
+        <div class="city-grid">
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">北京</div>
+            <div class="city-desc">第一次去首都，天安门广场的宏大、故宫的沉静与胡同里的烟火气，构成了一种奇妙的混合。北京的厚重感是别的城市给不了的。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <img src="大连.jpg" alt="大连" class="city-photo">
+            <div class="city-card-body">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">大连</div>
+            <div class="city-desc">海风、海鲜、还有意外好看的欧式建筑街区。夏天的大连有一种格外松弛的感觉，适合放空。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">济南</div>
+            <div class="city-desc">趵突泉的泉水清澈到令人惊叹，泉城的名号名副其实。老街的气质安静而不张扬。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">郑州</div>
+            <div class="city-desc">中原腹地，热干面和烩面让人印象深刻。郑州的节奏比想象中快，是一座很有生命力的城市。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">南京</div>
+            <div class="city-desc">历史与现代交叠得恰到好处。中山陵的梧桐道、夫子庙的灯影、还有秦淮河畔的夜晚，每一处都带着故事。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <img src="扬州.jpg" alt="扬州" class="city-photo">
+            <div class="city-card-body">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">扬州</div>
+            <div class="city-desc">慢节奏的城市，早茶文化让人流连。瘦西湖的烟雨朦胧，和诗句里那个扬州意象，某种程度上是呼应的。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">镇江</div>
+            <div class="city-desc">金山寺的传说从小便熟悉，站在寺前的感觉比想象中更有震撼感。锅盖面也是意外之喜。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">常州</div>
+            <div class="city-desc">恐龙园是童年记忆的一部分，长大再去仍然热闹非凡。这座城市藏着很多低调的惊喜。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">无锡</div>
+            <div class="city-desc">太湖边的风景让人放松，蠡园的荷花是夏天独有的美。无锡排骨面一定要打卡。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <img src="苏州.jpg" alt="苏州" class="city-photo">
+            <div class="city-card-body">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">苏州</div>
+            <div class="city-desc">园林、评弹、粉墙黛瓦——苏州是我见过最接近"诗意"这个词的城市。拙政园值得反复来。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">湖州</div>
+            <div class="city-desc">太湖南岸的安静小城，南浔古镇的水乡气质格外迷人，节奏慢得让人不想走。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">杭州</div>
+            <div class="city-desc">西湖的美在于四季皆宜，断桥残雪也好，夏日荷风也好。灵隐寺的晨钟让人心静。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+              <img src="长沙.jpg" alt="长沙" class="city-photo" style="height:120px;">
+              <img src="长沙2.jpg" alt="长沙2" class="city-photo" style="height:120px;">
+            </div>
+            <div class="city-card-body">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">长沙</div>
+            <div class="city-desc">文和友、茶颜悦色、臭豆腐——长沙是一座让人很快爱上的城市。橘子洲头的毛主席像壮观而震撼。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">福州</div>
+            <div class="city-desc">三坊七巷的青石板路走起来特别踏实，烟台山的老洋楼有种异域风情。鱼丸汤是记忆里最鲜的那一口。</div>
+            </div>
+          </div>
+
+          <div class="city-card">
+            <div class="city-card-no-photo">
+            <span class="city-badge visited">已打卡</span>
+            <div class="city-name">厦门</div>
+            <div class="city-desc">鼓浪屿的文艺气息和南普陀寺的禅意形成有趣的对比。环岛路的海风，是那次旅行最好的背景音。</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== 心愿清单 ===== -->
+      <section class="city-section">
+        <h2 class="city-section-title">✦ 还想去的地方</h2>
+        <div class="city-grid">
+
+          <div class="city-card wish">
+            <span class="city-badge wish">心愿清单</span>
+            <div class="city-name">香港</div>
+            <div class="city-desc">霓虹灯与维多利亚港的夜景、叮叮车和大排档——香港是中西文化碰撞最鲜活的地方，很想亲眼看看。</div>
+          </div>
+
+          <div class="city-card wish">
+            <span class="city-badge wish">心愿清单</span>
+            <div class="city-name">广州</div>
+            <div class="city-desc">早茶文化是我无法抗拒的理由，虾饺、肠粉、叉烧……粤式饮食是一种生活态度，值得专程去体验一次。</div>
+          </div>
+
+          <div class="city-card wish">
+            <span class="city-badge wish">心愿清单</span>
+            <div class="city-name">云南大理</div>
+            <div class="city-desc">洱海的蓝、苍山的白雪、古城的慢时光——大理是那种适合住上一周什么都不做的地方，心里一直惦记着。</div>
+          </div>
+
+          <div class="city-card wish">
+            <span class="city-badge wish">心愿清单</span>
+            <div class="city-name">内蒙古</div>
+            <div class="city-desc">没有边际的草原、星空、策马——想象中的内蒙古辽阔得令人心跳加速。有一天一定要去看看真正的"天苍苍，野茫茫"。</div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

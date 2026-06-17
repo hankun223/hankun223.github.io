@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>影视作品 — 高坤涵</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hobby-page {
+      padding: 120px 48px 100px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      font-size: 15px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .page-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+    .page-icon { font-size: 44px; }
+    .page-title {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+    }
+
+    /* ===== 分区 ===== */
+    .drama-section {
+      margin-bottom: 72px;
+    }
+    .drama-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 36px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    /* ===== 卡片列表 ===== */
+    .drama-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .drama-card {
+      display: flex;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .drama-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* 左侧彩色区块 */
+    .drama-thumb {
+      width: 90px;
+      flex-shrink: 0;
+      background: linear-gradient(150deg, rgba(155,58,138,0.18) 0%, rgba(155,58,138,0.06) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+    }
+
+    .drama-body {
+      padding: 22px 28px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      flex: 1;
+    }
+
+    .drama-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .drama-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.3px;
+    }
+
+    .drama-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .drama-tag {
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      background: rgba(155, 58, 138, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(155, 58, 138, 0.22);
+    }
+
+    .drama-review {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-top: 2px;
+    }
+
+    /* ===== 结尾语 ===== */
+    .drama-closing {
+      margin-top: 8px;
+      padding: 28px 32px;
+      background: var(--surface);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+    .drama-closing strong {
+      color: var(--accent);
+    }
+
+    @media (max-width: 700px) {
+      .hobby-page { padding: 88px 20px 60px; }
+      .drama-thumb { width: 64px; font-size: 28px; }
+      .drama-body { padding: 18px 18px 18px 16px; }
+      .drama-title { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo" style="text-decoration:none;">高坤涵</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">基本情况</a></li>
+      <li><a href="../index.html#hobbies">兴趣爱好</a></li>
+      <li><a href="../index.html#monologue">个人独白</a></li>
+    </ul>
+  </nav>
+
+  <main class="hobby-page">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#hobbies">← 返回兴趣爱好</a>
+
+      <div class="page-heading">
+        <span class="page-icon">📺</span>
+        <h1 class="page-title">影视作品</h1>
+      </div>
+
+      <!-- ===== 偶像剧 ===== -->
+      <section class="drama-section">
+        <h2 class="drama-subtitle">偶像剧 · 追剧单</h2>
+        <div class="drama-list">
+
+          <div class="drama-card">
+            <div class="drama-thumb">💌</div>
+            <div class="drama-body">
+              <div class="drama-title">《想见你》</div>
+              <div class="drama-meta">2019 · 台湾 · 时间循环 / 爱情悬疑</div>
+              <div class="drama-tags">
+                <span class="drama-tag">台剧</span>
+                <span class="drama-tag">时间循环</span>
+                <span class="drama-tag">悬疑</span>
+              </div>
+              <p class="drama-review">
+                把时间穿越和悬疑包进一段爱情里，越看越上头。
+                原本以为是普通的爱情剧，后来发现逻辑闭环完成得那么漂亮——
+                陈韫如和李子维的故事，是关于一个人怎么等到另一个人，
+                跨越了时间也跨越了身份。配乐也极好，每次响起来都会心里一紧。
+              </p>
+            </div>
+          </div>
+
+          <div class="drama-card">
+            <div class="drama-thumb">🌿</div>
+            <div class="drama-body">
+              <div class="drama-title">《你好，旧时光》</div>
+              <div class="drama-meta">2018 · 内地 · 校园青春 / 改编自同名小说</div>
+              <div class="drama-tags">
+                <span class="drama-tag">校园</span>
+                <span class="drama-tag">青春</span>
+                <span class="drama-tag">改编剧</span>
+              </div>
+              <p class="drama-review">
+                那种少年时代才有的氛围，被拍出来了。
+                林杨和余周周的默契是从小积攒起来的，
+                看着他们长大的过程，莫名会想到自己高中的某些瞬间。
+                不煽情、不狗血，只是干干净净地把青春拍了个完整。
+              </p>
+            </div>
+          </div>
+
+          <div class="drama-card">
+            <div class="drama-thumb">🌸</div>
+            <div class="drama-body">
+              <div class="drama-title">《招摇》</div>
+              <div class="drama-meta">2018 · 内地 · 古装仙侠 / 改编自九鹭非香同名小说</div>
+              <div class="drama-tags">
+                <span class="drama-tag">古装仙侠</span>
+                <span class="drama-tag">甜宠</span>
+                <span class="drama-tag">改编剧</span>
+              </div>
+              <p class="drama-review">
+                招摇和殷奇之间的感情线拉扯得恰到好处，又甜又虐，
+                看的时候总在「好甜啊」和「怎么又虐」之间横跳。
+                仙侠世界的氛围感很足，白鹿把招摇那股子灵气演出来了——
+                是那种让人忍不住想一口气追完的剧。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== 动漫 ===== -->
+      <section class="drama-section">
+        <h2 class="drama-subtitle">动漫 · 精选</h2>
+        <div class="drama-list">
+
+          <div class="drama-card">
+            <div class="drama-thumb">🌀</div>
+            <div class="drama-body">
+              <div class="drama-title">《关于我转生变成史莱姆这档事》</div>
+              <div class="drama-meta">2018 — 至今 · 异世界 / 建国向</div>
+              <div class="drama-tags">
+                <span class="drama-tag">异世界</span>
+                <span class="drama-tag">热血</span>
+                <span class="drama-tag">治愈</span>
+              </div>
+              <p class="drama-review">
+                利姆鲁从一只毫无攻击力的史莱姆，一步步成长为统治者——
+                这个过程看得人心情极好。他不靠蛮力，靠的是人格魅力和真诚，
+                每次吸收新能力的时候都有种「哇又强了」的爽感。
+                整部作品治愈多过热血，是那种可以反复看的番。
+                （没错，我的头像就是他！）
+              </p>
+            </div>
+          </div>
+
+          <div class="drama-card">
+            <div class="drama-thumb">🧠</div>
+            <div class="drama-body">
+              <div class="drama-title">《齐木楠雄的灾难》</div>
+              <div class="drama-meta">2016—2019 · 日本 · 超能力 / 日常喜剧</div>
+              <div class="drama-tags">
+                <span class="drama-tag">喜剧</span>
+                <span class="drama-tag">超能力</span>
+                <span class="drama-tag">日常向</span>
+              </div>
+              <p class="drama-review">
+                天生全知全能的超能力者，最大的愿望只是过上普通人的生活——
+                这个设定本身就够好笑了。齐木楠雄的内心独白几乎每句都是名场面，
+                明明是他最厉害，偏偏总是一脸无奈地被一群普通（？）朋友牵着走。
+                笑着笑着会觉得：「这家伙其实挺幸运的。」
+              </p>
+            </div>
+          </div>
+
+          <div class="drama-card">
+            <div class="drama-thumb">🛋️</div>
+            <div class="drama-body">
+              <div class="drama-title">《干物妹小埋》</div>
+              <div class="drama-meta">2015 · 日本 · 日常 / 治愈系喜剧</div>
+              <div class="drama-tags">
+                <span class="drama-tag">日常</span>
+                <span class="drama-tag">治愈</span>
+                <span class="drama-tag">喜剧</span>
+              </div>
+              <p class="drama-review">
+                在学校是完美少女，回到家立刻变身薯片可乐葛优瘫——
+                这种双面反差本身就很解压。看小埋在家里打游戏、看动漫、
+                搞各种奇怪仪式感的日常，莫名会产生一种「就该这样」的共鸣。
+                心情不好的时候翻出来看，包治百病。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== 历史剧 ===== -->
+      <section class="drama-section">
+        <h2 class="drama-subtitle">历史剧 · 品味</h2>
+        <div class="drama-list">
+
+          <div class="drama-card">
+            <div class="drama-thumb">🏯</div>
+            <div class="drama-body">
+              <div class="drama-title">《琅琊榜》</div>
+              <div class="drama-meta">2015 · 内地 · 权谋 / 家国情怀</div>
+              <div class="drama-tags">
+                <span class="drama-tag">权谋</span>
+                <span class="drama-tag">家国</span>
+                <span class="drama-tag">剧情严密</span>
+              </div>
+              <p class="drama-review">
+                梅长苏用一副羸弱的身体下了一盘延续十几年的大棋，
+                全程看得又心疼又解气。每一步都有伏笔，每一个角色都活得有立场，
+                台词也是真的经得起反复推敲。
+                「大梁最聪明的人」不是说说而已——他的每一句话都是算计过的。
+              </p>
+            </div>
+          </div>
+
+          <div class="drama-card">
+            <div class="drama-thumb">🏮</div>
+            <div class="drama-body">
+              <div class="drama-title">《长安十二时辰》</div>
+              <div class="drama-meta">2019 · 内地 · 唐代悬疑 / 实景考据</div>
+              <div class="drama-tags">
+                <span class="drama-tag">盛唐</span>
+                <span class="drama-tag">悬疑</span>
+                <span class="drama-tag">考据精良</span>
+              </div>
+              <p class="drama-review">
+                把大唐盛世最繁华的一夜拍成了一道悬疑关卡——
+                满城的烟火喧嚣背后是一场精心布局的毁灭。
+                服化道和场景考据做得极认真，光是看那个复原的长安城就已经值回票价。
+                张小敬的「不良人」气质，是整部剧的魂。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="drama-closing">
+        追剧是偶尔的出逃，也是另一种观察世界的方式——
+        <strong>你有什么好看的推荐给我吗？</strong>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

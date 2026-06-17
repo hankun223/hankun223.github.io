@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>运动 — 高坤涵</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hobby-page {
+      padding: 120px 48px 100px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      font-size: 15px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .page-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+    .page-icon { font-size: 44px; }
+    .page-title {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+    }
+
+    .sports-section {
+      margin-bottom: 16px;
+    }
+    .sports-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 36px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    /* ===== 跟练卡片 ===== */
+    .workout-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .workout-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .workout-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .workout-cover {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .workout-body {
+      padding: 24px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .workout-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .workout-index {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(155, 58, 138, 0.12);
+      border: 1px solid rgba(155, 58, 138, 0.3);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .workout-title-link {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .workout-title-link:hover { color: var(--accent); }
+
+    .workout-hint {
+      font-size: 11px;
+      color: var(--accent);
+      opacity: 0.6;
+      white-space: nowrap;
+    }
+
+    .workout-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .workout-tag {
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      background: rgba(155, 58, 138, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(155, 58, 138, 0.22);
+    }
+
+    .workout-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+
+    @media (max-width: 700px) {
+      .hobby-page { padding: 88px 20px 60px; }
+      .workout-header { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo" style="text-decoration:none;">高坤涵</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">基本情况</a></li>
+      <li><a href="../index.html#hobbies">兴趣爱好</a></li>
+      <li><a href="../index.html#monologue">个人独白</a></li>
+    </ul>
+  </nav>
+
+  <main class="hobby-page">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#hobbies">← 返回兴趣爱好</a>
+
+      <div class="page-heading">
+        <span class="page-icon">🏸</span>
+        <h1 class="page-title">运动</h1>
+      </div>
+
+      <section class="sports-section">
+        <h2 class="sports-subtitle">我常跟练的运动</h2>
+        <div class="workout-list">
+
+          <!-- ① 站立普拉提 -->
+          <div class="workout-card">
+            <img src="运动1.png" alt="30分钟站立普拉提" class="workout-cover">
+            <div class="workout-body">
+              <div class="workout-header">
+                <span class="workout-index">①</span>
+                <a class="workout-title-link"
+                   href="https://www.bilibili.com/video/BV1Pd95BSEwm/?spm_id_from=333.337.search-card.all.click&vd_source=a1e3d0311ccede79334db387e59db5c0"
+                   target="_blank" rel="noopener">30分钟站立普拉提</a>
+                <span class="workout-hint">▶ 点击前往 B站跟练</span>
+              </div>
+              <div class="workout-tags">
+                <span class="workout-tag">燃脂塑形</span>
+                <span class="workout-tag">普拉提</span>
+                <span class="workout-tag">无器械</span>
+              </div>
+              <p class="workout-desc">
+                全程站立完成，不需要任何器械，宿舍或家里都能跟练。
+                动作循序渐进，30分钟下来核心和腿部都会有很明显的感知，
+                坚持一段时间之后体型变化是真的看得出来的。
+              </p>
+            </div>
+          </div>
+
+          <!-- ② 缓解肩颈酸痛 -->
+          <div class="workout-card">
+            <img src="运动2.png" alt="缓解肩颈酸痛" class="workout-cover">
+            <div class="workout-body">
+              <div class="workout-header">
+                <span class="workout-index">②</span>
+                <a class="workout-title-link"
+                   href="https://www.bilibili.com/video/BV1vu411e7fC/?spm_id_from=333.337.search-card.all.click&vd_source=a1e3d0311ccede79334db387e59db5c0"
+                   target="_blank" rel="noopener">缓解肩颈酸痛</a>
+                <span class="workout-hint">▶ 点击前往 B站跟练</span>
+              </div>
+              <div class="workout-tags">
+                <span class="workout-tag">放松</span>
+                <span class="workout-tag">肩颈</span>
+                <span class="workout-tag">久坐必备</span>
+              </div>
+              <p class="workout-desc">
+                久坐学习之后肩颈特别容易紧绷，这套动作专门针对这个问题。
+                跟完之后有一种从头到脖子都松开了的感觉，
+                睡前做一遍效果尤其好，推荐给每个长时间对着屏幕的人。
+              </p>
+            </div>
+          </div>
+
+          <!-- ③ 运动前后拉伸 -->
+          <div class="workout-card">
+            <div class="workout-body">
+              <div class="workout-header">
+                <span class="workout-index">③</span>
+                <a class="workout-title-link"
+                   href="https://www.bilibili.com/video/BV169bQzuEHS/?spm_id_from=333.337.search-card.all.click&vd_source=a1e3d0311ccede79334db387e59db5c0"
+                   target="_blank" rel="noopener">10分钟运动前后拉伸</a>
+                <span class="workout-hint">▶ 点击前往 B站跟练</span>
+              </div>
+              <div class="workout-tags">
+                <span class="workout-tag">拉伸</span>
+                <span class="workout-tag">热身放松</span>
+                <span class="workout-tag">10分钟</span>
+              </div>
+              <p class="workout-desc">
+                运动前做可以激活肌肉、降低受伤风险，运动后做帮助身体恢复、缓解次日酸痛。
+                动作不难、时间短，很容易养成习惯，
+                坚持下来之后感觉整体柔韧性都有明显提升。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

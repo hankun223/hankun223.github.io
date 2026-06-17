@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电影 — 高坤涵</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hobby-page {
+      padding: 120px 48px 100px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      font-size: 15px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .page-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+    .page-icon { font-size: 44px; }
+    .page-title {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+    }
+
+    .film-section {
+      margin-bottom: 72px;
+    }
+    .film-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 36px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    /* ===== 电影卡片列表 ===== */
+    .film-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .film-card {
+      display: flex;
+      gap: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .film-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .film-poster {
+      width: 130px;
+      flex-shrink: 0;
+      object-fit: cover;
+      display: block;
+    }
+
+    .film-body {
+      padding: 24px 28px 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .film-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .film-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .film-tag {
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      background: rgba(155, 58, 138, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(155, 58, 138, 0.22);
+    }
+
+    .film-review {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+    }
+
+    /* ===== 结尾语 ===== */
+    .film-closing {
+      margin-top: 16px;
+      padding: 28px 32px;
+      background: var(--surface);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+    .film-closing strong {
+      color: var(--accent);
+    }
+
+    @media (max-width: 700px) {
+      .hobby-page { padding: 88px 20px 60px; }
+      .film-card { flex-direction: column; }
+      .film-poster { width: 100%; height: 200px; }
+      .film-body { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo" style="text-decoration:none;">高坤涵</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">基本情况</a></li>
+      <li><a href="../index.html#hobbies">兴趣爱好</a></li>
+      <li><a href="../index.html#monologue">个人独白</a></li>
+    </ul>
+  </nav>
+
+  <main class="hobby-page">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#hobbies">← 返回兴趣爱好</a>
+
+      <div class="page-heading">
+        <span class="page-icon">🎬</span>
+        <h1 class="page-title">电影</h1>
+      </div>
+
+      <section class="film-section">
+        <h2 class="film-subtitle">我的观影单</h2>
+        <div class="film-list">
+
+          <div class="film-card">
+            <img src="星际穿越.jpg" alt="星际穿越" class="film-poster">
+            <div class="film-body">
+              <div class="film-title">《星际穿越》</div>
+              <div class="film-tags">
+                <span class="film-tag">科幻</span>
+                <span class="film-tag">诺兰</span>
+              </div>
+              <p class="film-review">
+                诺兰把「时间」拍成了一封跨越维度的信——父亲对女儿的爱，
+                最终以引力的形式穿透了黑洞。
+                喜欢它的地方不在于硬核的物理设定，而在于那种渺小与宏大并存的震撼感，
+                看完之后很久都回不过神来。
+              </p>
+            </div>
+          </div>
+
+          <div class="film-card">
+            <img src="密室逃生.jpg" alt="密室逃生" class="film-poster">
+            <div class="film-body">
+              <div class="film-title">《密室逃生》</div>
+              <div class="film-tags">
+                <span class="film-tag">悬疑推理</span>
+                <span class="film-tag">惊悚</span>
+              </div>
+              <p class="film-review">
+                每一个密室都是一道精心设计的谜题，
+                节奏紧绷、机关层层递进，看的时候全程屏住呼吸。
+                比起纯吓人的恐怖片，更喜欢这种靠智力博弈制造紧张感的类型，
+                悬念到最后一刻都没有松掉。
+              </p>
+            </div>
+          </div>
+
+          <div class="film-card">
+            <img src="看不见的客人.jpg" alt="看不见的客人" class="film-poster">
+            <div class="film-body">
+              <div class="film-title">《看不见的客人》</div>
+              <div class="film-tags">
+                <span class="film-tag">悬疑推理</span>
+                <span class="film-tag">西班牙</span>
+              </div>
+              <p class="film-review">
+                叙述视角像一把刀，随着真相一层层剥开，每次以为摸到底了，
+                底下还有底。结尾的反转让整部片子重新活了一遍，
+                是那种看完会想立刻回头验证每一个细节的电影。
+              </p>
+            </div>
+          </div>
+
+          <div class="film-card">
+            <img src="蜘蛛侠2英雄远征.jpg" alt="蜘蛛侠英雄远征" class="film-poster">
+            <div class="film-body">
+              <div class="film-title">《蜘蛛侠：英雄远征》</div>
+              <div class="film-tags">
+                <span class="film-tag">科幻</span>
+                <span class="film-tag">漫威</span>
+              </div>
+              <p class="film-review">
+                彼得·帕克只是个想好好放假的高中生，结果假没放成，
+                世界又得他来救。喜欢这部里他身上那种「普通少年」的真实感，
+                会害怕、会逃避，但最后还是选择承担——
+                超能力只是外衣，里面包的是一个很好的人。
+              </p>
+            </div>
+          </div>
+
+          <div class="film-card">
+            <img src="唐人街探案.jpg" alt="唐人街探案" class="film-poster">
+            <div class="film-body">
+              <div class="film-title">《唐人街探案》</div>
+              <div class="film-tags">
+                <span class="film-tag">悬疑推理</span>
+                <span class="film-tag">喜剧</span>
+              </div>
+              <p class="film-review">
+                推理包裹在喜剧外壳里，看的时候一直在笑，
+                但笑完之后案子的逻辑链又是严丝合缝的。
+                唐仁和秦风这对组合太有趣了，一个天赋异禀一个无厘头，
+                反而碰出了意想不到的化学反应。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="film-closing">
+        期待蜘蛛侠最新作品 ing ——
+        <strong>或许你也喜欢，想和我一起去看？</strong>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

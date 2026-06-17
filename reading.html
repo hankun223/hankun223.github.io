@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阅读 — 高坤涵</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .hobby-page {
+      padding: 120px 48px 100px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      font-size: 15px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .page-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+    .page-icon { font-size: 44px; }
+    .page-title {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+    }
+
+    /* ===== 分区标题 ===== */
+    .reading-section {
+      margin-bottom: 72px;
+    }
+    .reading-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    /* ===== 书单卡片 ===== */
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .book-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .book-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .book-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .book-author {
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+    .book-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      flex: 1;
+    }
+    .book-quote {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 12px 16px;
+      background: var(--bg);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      line-height: 1.7;
+    }
+
+    /* ===== 图片区 ===== */
+    .book-image-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .book-image {
+      width: 100%;
+      max-width: 560px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(155, 58, 138, 0.1);
+      display: block;
+    }
+    /* 图片加载失败时显示占位 */
+    .book-image::after {
+      content: '图片加载中…';
+    }
+    figcaption {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 700px) {
+      .hobby-page { padding: 88px 20px 60px; }
+      .book-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo" style="text-decoration:none;">高坤涵</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">基本情况</a></li>
+      <li><a href="../index.html#hobbies">兴趣爱好</a></li>
+      <li><a href="../index.html#monologue">个人独白</a></li>
+    </ul>
+  </nav>
+
+  <main class="hobby-page">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#hobbies">← 返回兴趣爱好</a>
+
+      <div class="page-heading">
+        <span class="page-icon">📚</span>
+        <h1 class="page-title">阅读</h1>
+      </div>
+
+      <!-- 古典诗词书单 -->
+      <section class="reading-section">
+        <h2 class="reading-subtitle">古典诗词 · 精选书单</h2>
+        <div class="book-grid">
+
+          <div class="book-card">
+            <div class="book-title">《人间词话》</div>
+            <div class="book-author">王国维 著 · 清末民初</div>
+            <p class="book-desc">
+              近代词学批评的巅峰之作，以「境界」为核心构建词学体系，
+              言简意深，寥寥数语道尽古典词之妙，影响深远至今。
+            </p>
+            <blockquote class="book-quote">
+              "词以境界为最上。有境界则自成高格，自有名句。"
+            </blockquote>
+          </div>
+
+          <div class="book-card">
+            <div class="book-title">《唐诗三百首》</div>
+            <div class="book-author">蘅塘退士 编 · 清代</div>
+            <p class="book-desc">
+              流传最广的唐诗选本，汇聚李白、杜甫、王维等大家三百余首精品，
+              是走进唐诗世界最好的入门书，也是最经典的案头读本。
+            </p>
+            <blockquote class="book-quote">
+              "熟读唐诗三百首，不会作诗也会吟。"
+            </blockquote>
+          </div>
+
+          <div class="book-card">
+            <div class="book-title">《纳兰词》</div>
+            <div class="book-author">纳兰性德 著 · 清代</div>
+            <p class="book-desc">
+              清代第一词人纳兰性德的词集，情真意切，哀婉缠绵，
+              被誉为「北宋以来，一人而已」，尤以悼亡词与边塞词见长。
+            </p>
+            <blockquote class="book-quote">
+              "人生若只如初见，何事秋风悲画扇。"
+            </blockquote>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 人间词话图片 -->
+      <!-- 请将图片文件命名为 renjian.jpg 并放入 hobbies/ 目录 -->
+      <section class="reading-section">
+        <h2 class="reading-subtitle">人间词话 · 书摘</h2>
+        <figure class="book-image-wrap">
+          <img src="renjian.jpg" alt="《人间词话》书页" class="book-image">
+          <figcaption>《人间词话》· 王国维</figcaption>
+        </figure>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>
