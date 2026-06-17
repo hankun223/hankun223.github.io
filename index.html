@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高坤涵的个人主页</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #slime-widget {
+      position: fixed;
+      bottom: 20px;
+      width: 76px;
+      height: 76px;
+      cursor: pointer;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.7s;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    #slime-widget .slime-body-img,
+    #slime-widget .slime-human-img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      transition: opacity 0.35s, transform 0.4s;
+    }
+    #slime-widget .slime-body-img {
+      object-fit: contain;
+      filter: drop-shadow(0 0 14px rgba(100, 190, 255, 0.85)) opacity(0.88);
+    }
+    #slime-widget .slime-human-img {
+      object-fit: cover;
+      object-position: top;
+      border-radius: 50%;
+      box-shadow: 0 0 18px rgba(100, 190, 255, 0.7);
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    #slime-widget.is-human .slime-body-img {
+      opacity: 0;
+      transform: scale(1.3);
+    }
+    #slime-widget.is-human .slime-human-img {
+      opacity: 1;
+      transform: scale(1);
+    }
+    @keyframes slime-bob {
+      0%, 100% { transform: translateY(0) scaleX(1) scaleY(1); }
+      50%       { transform: translateY(-7px) scaleX(0.96) scaleY(1.06); }
+    }
+    #slime-widget:not(.is-human) .slime-body-img {
+      animation: slime-bob 2.2s ease-in-out infinite;
+    }
+    @keyframes human-run {
+      0%, 100% { transform: scale(1) rotate(-5deg); }
+      50%       { transform: scale(1) rotate(5deg); }
+    }
+    #slime-widget.is-human .slime-human-img {
+      animation: human-run 0.28s ease-in-out infinite;
+    }
+    #slime-widget:not(.is-human)::after {
+      content: '点我！';
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(155, 58, 138, 0.88);
+      color: #fff;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.25s;
+      pointer-events: none;
+    }
+    #slime-widget:not(.is-human):hover::after { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-logo">高坤涵</div>
+    <ul class="nav-links">
+      <li><a href="#about">基本情况</a></li>
+      <li><a href="#hobbies">兴趣爱好</a></li>
+      <li><a href="#monologue">个人独白</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero 区域 -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-avatar-row">
+        <div class="avatar-col">
+          <div class="avatar-ring">
+            <div class="avatar">
+              <img src="avatar.jpg" alt="头像" class="avatar-img">
+            </div>
+          </div>
+          <p class="click-hint">点击头像 · 换一句</p>
+        </div>
+        <div class="speech-bubble">
+          <p class="bubble-text">喜欢我的头像吗，他叫利姆鲁，本体是一只可爱的史莱姆哦。</p>
+        </div>
+      </div>
+      <h1 class="hero-name">我是 <span class="highlight">高坤涵</span>，<br>欢迎来到我的个人小站</h1>
+      <p class="hero-tagline">大二在读 · 热爱生活 · 保持好奇</p>
+      <div class="scroll-hint">↓</div>
+    </div>
+  </header>
+
+  <!-- 基本情况介绍 -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">01</span>
+        <h2 class="section-title">基本情况介绍</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="card-icon">🎓</div>
+          <h3>教育背景</h3>
+          <p>上海交通大学 · 智能感知工程</p>
+          <p class="card-sub">大二在读</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">📍</div>
+          <h3>所在城市</h3>
+          <p>中国 · 上海</p>
+          <p class="card-sub">来自 安徽</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">✨</div>
+          <h3>个人属性</h3>
+          <p>巨蟹座 · INTJ</p>
+          <p class="card-sub">感性与理性并存</p>
+        </div>
+      </div>
+      <div class="bio-block">
+        <p>
+          我是一名大二学生，正处于对世界充满探索欲的年纪。
+          喜欢把想法付诸行动，相信每一次尝试都有其意义。
+          这里是我记录自己的一角。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 兴趣爱好 -->
+  <section id="hobbies" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">02</span>
+        <h2 class="section-title">兴趣爱好</h2>
+      </div>
+      <div class="hobbies-grid">
+        <a class="hobby-item" href="hobbies/reading.html">
+          <div class="hobby-icon">📚</div>
+          <div class="hobby-body">
+            <h3>阅读</h3>
+            <p>沉醉于古典诗词的意境，也享受言情故事里的人情冷暖，悬疑推理则让思维保持清醒。</p>
+            <div class="tags">
+              <span class="tag">古典诗词</span>
+              <span class="tag">言情</span>
+              <span class="tag">悬疑推理</span>
+            </div>
+          </div>
+        </a>
+        <a class="hobby-item" href="hobbies/music.html">
+          <div class="hobby-icon">🎵</div>
+          <div class="hobby-body">
+            <h3>音乐</h3>
+            <p>从流行到古风，再到 ACG 动漫音乐，旋律是最能直击情绪的语言。</p>
+            <div class="tags">
+              <span class="tag">流行</span>
+              <span class="tag">古风</span>
+              <span class="tag">ACG</span>
+            </div>
+          </div>
+        </a>
+        <a class="hobby-item" href="hobbies/film.html">
+          <div class="hobby-icon">🎬</div>
+          <div class="hobby-body">
+            <h3>电影</h3>
+            <p>科幻世界里的无限可能与悬疑推理中的层层揭秘，都让我着迷。</p>
+            <div class="tags">
+              <span class="tag">科幻</span>
+              <span class="tag">悬疑推理</span>
+            </div>
+          </div>
+        </a>
+        <a class="hobby-item" href="hobbies/sports.html">
+          <div class="hobby-icon">🏸</div>
+          <div class="hobby-body">
+            <h3>运动</h3>
+            <p>打羽毛球让心情舒畅，慢走和瑜伽则是与自己独处的安静时刻。</p>
+            <div class="tags">
+              <span class="tag">羽毛球</span>
+              <span class="tag">慢走</span>
+              <span class="tag">瑜伽</span>
+            </div>
+          </div>
+        </a>
+        <a class="hobby-item" href="hobbies/drama.html">
+          <div class="hobby-icon">📺</div>
+          <div class="hobby-body">
+            <h3>影视作品</h3>
+            <p>偶像剧里寻找浪漫，动漫里感受热血与治愈，历史剧里品味朝代更迭的厚重感。</p>
+            <div class="tags">
+              <span class="tag">偶像剧</span>
+              <span class="tag">动漫</span>
+              <span class="tag">历史剧</span>
+            </div>
+          </div>
+        </a>
+        <a class="hobby-item" href="hobbies/travel.html">
+          <div class="hobby-icon">🗺️</div>
+          <div class="hobby-body">
+            <h3>旅行足迹</h3>
+            <p>走过十几座城市，每一处都留下了不同的记忆，还有更多地方等待着去探索。</p>
+            <div class="tags">
+              <span class="tag">已打卡 15城</span>
+              <span class="tag">心愿清单</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 个人独白 -->
+  <section id="monologue" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">03</span>
+        <h2 class="section-title">个人独白</h2>
+      </div>
+      <div class="monologue-container">
+        <div class="quote-block">
+          <div class="quote-line"></div>
+          <blockquote>
+            "我始终对成长充满忐忑，但只要不断出发，就会不断有新的收获。"
+          </blockquote>
+        </div>
+        <div class="monologue-text">
+          <p>
+            对成长的忐忑，大概从来没有真正消失过。
+            每一次站在新的起点——第一次离家、第一次独立做决定、第一次面对真正意义上的失败——
+            都会有一种说不清楚的慌张，像是站在雾里，看不到脚下的路延伸向哪里。
+          </p>
+          <p>
+            但我后来发现了一件事：那种忐忑并不会因为"想清楚了"就消散，
+            它只会在你真的迈出去之后，悄悄变轻。
+            每一次出发，哪怕方向还模糊，都会带回一些出发之前没有的东西——
+            可能是一种新的眼光，可能是对自己的一点新认识，
+            也可能只是一段意外的经历，但那已经足够了。
+          </p>
+          <p>
+            我不再执着于找到"正确答案"再行动。
+            现在的我更相信：
+            <strong>路是走出来的，收获是出发换来的。</strong>
+          </p>
+        </div>
+        <div class="timeline">
+          <h3 class="timeline-title">近期计划</h3>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-body">
+              <span class="timeline-date">期末季</span>
+              <p>顺利度过期末考试，为这个学期画好句号</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-body">
+              <span class="timeline-date">演出季</span>
+              <p>去更多喜欢的歌手的演唱会</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-body">
+              <span class="timeline-date">探索中</span>
+              <p>多尝试上海的美食，寻找机会探索韩国街</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p>© 2026 高坤涵 · 用心搭建 · 保持更新</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+  (function () {
+    var SPAWN_DELAY = 30000;
+    var SIZE = 76;
+    var SLIME_SPEED = 28;
+    var HUMAN_SPEED = 200;
+
+    var el = null, posX = 0, rafId = null, isHuman = false, lastTs = null;
+
+    function scheduleSpawn() { setTimeout(spawn, SPAWN_DELAY); }
+
+    function spawn() {
+      el = document.createElement('div');
+      el.id = 'slime-widget';
+      el.innerHTML =
+        '<img class="slime-body-img" src="hobbies/史莱姆本体.png" draggable="false" alt="">' +
+        '<img class="slime-human-img" src="hobbies/史莱姆人形.png" draggable="false" alt="">';
+      document.body.appendChild(el);
+
+      posX = window.innerWidth + 10;
+      el.style.left = posX + 'px';
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { el.style.opacity = '1'; });
+      });
+
+      el.addEventListener('click', handleClick);
+      lastTs = null;
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function tick(ts) {
+      if (!lastTs) { lastTs = ts; rafId = requestAnimationFrame(tick); return; }
+      var dt = Math.min((ts - lastTs) / 1000, 0.1);
+      lastTs = ts;
+
+      posX -= (isHuman ? HUMAN_SPEED : SLIME_SPEED) * dt;
+
+      if (posX < -SIZE - 30) {
+        cleanup();
+        scheduleSpawn();
+        return;
+      }
+
+      el.style.left = posX + 'px';
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function handleClick() {
+      if (isHuman) return;
+      isHuman = true;
+      el.classList.add('is-human');
+    }
+
+    function cleanup() {
+      cancelAnimationFrame(rafId);
+      if (el) { el.remove(); el = null; }
+      isHuman = false;
+      lastTs = null;
+    }
+
+    spawn();
+  })();
+  </script>
+</body>
+</html>
